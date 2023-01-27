@@ -3,88 +3,46 @@
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
             <li class="nav-item dropdown open">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+                <a class="dropdown-toggle" href="{{route('home')}}">
                     <span class="icon-holder">
                         <i class="anticon anticon-dashboard"></i>
                     </span>
                     <span class="title">Dashboard</span>
-                    <span class="arrow">
-                        <i class="arrow-icon"></i>
-                    </span>
                 </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="index.html">Default</a>
-                    </li>
-                    <li>
-                        <a href="index-crm.html">CRM</a>
-                    </li>
-                    <li class="active">
-                        <a href="index-e-commerce.html">E-commerce</a>
-                    </li>
-                    <li>
-                        <a href="index-projects.html">Projects</a>
-                    </li>
-                </ul>
+
             </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
                         <i class="anticon anticon-appstore"></i>
                     </span>
-                    <span class="title">Apps</span>
+                    <span class="title">Managements</span>
                     <span class="arrow">
                         <i class="arrow-icon"></i>
                     </span>
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="app-chat.html">Chat</a>
+                        <a href="{{route('users.index')}}">Users</a>
                     </li>
-                    <li>
-                        <a href="app-file-manager.html">File Manager</a>
-                    </li>
-                    <li>
-                        <a href="app-mail.html">Mail</a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a href="javascript:void(0);">
-                            <span>Projects</span>
+                            <span>Roles & Permissions </span>
                             <span class="arrow">
                                 <i class="arrow-icon"></i>
                             </span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="app-project-list.html">Project List</a>
+                                <a href="#">Roles</a>
                             </li>
                             <li>
-                                <a href="app-project-details.html">Project Details</a>
+                                <a href="#">Permissions</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="javascript:void(0);">
-                            <span>E-commerce</span>
-                            <span class="arrow">
-                                <i class="arrow-icon"></i>
-                            </span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="app-e-commerce-order-list.html">Orders List</a>
-                            </li>
-                            <li>
-                                <a href="app-e-commerce-products.html">Products</a>
-                            </li>
-                            <li>
-                                <a href="app-e-commerce-products-list.html">Products List</a>
-                            </li>
-                            <li>
-                                <a href="app-e-commerce-products-edit.html">Products Edit</a>
-                            </li>
-                        </ul>
-                    </li>
+
                 </ul>
             </li>
             <li class="nav-item dropdown">
