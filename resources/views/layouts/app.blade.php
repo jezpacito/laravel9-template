@@ -15,6 +15,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @livewireStyles
+    @powerGridStyles
 </head>
 <body>
     <div id="app">
@@ -75,5 +77,8 @@
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+    @livewireScripts
+    @powerGridScripts
 </body>
 </html>

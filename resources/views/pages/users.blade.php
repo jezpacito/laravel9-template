@@ -1,5 +1,6 @@
 @extends('layouts.master')
-
 @section('content')
-<livewire:user-table />
+<div>
+    <livewire:user-table />
+</div>
 @endsection
