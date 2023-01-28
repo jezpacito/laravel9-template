@@ -9,13 +9,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png">
+    <link rel="shortcut icon" href="{{asset('assets/images/logo/favicon.png')}}">
 
     <!-- page css -->
-    <link href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="{{asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}" rel="stylesheet">
 
     <!-- Core css -->
-    <link href="assets/css/app.min.css" rel="stylesheet">
+    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
     @livewireStyles

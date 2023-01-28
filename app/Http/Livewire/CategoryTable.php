@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use PowerComponents\LivewirePowerGrid\Button;
@@ -17,7 +17,7 @@ use PowerComponents\LivewirePowerGrid\Rules\Rule;
 use PowerComponents\LivewirePowerGrid\Rules\RuleActions;
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
-final class UserTable extends PowerGridComponent
+final class CategoryTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -54,11 +54,11 @@ final class UserTable extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\User>
+     * @return Builder<\App\Models\Category>
      */
     public function datasource(): Builder
     {
-        return User::query();
+        return Category::query();
     }
 
     /*
@@ -97,14 +97,13 @@ final class UserTable extends PowerGridComponent
             ->addColumn('name')
 
             /** Example of custom column using a closure **/
-            ->addColumn('name_lower', function (User $model) {
+            ->addColumn('name_lower', function (Category $model) {
                 return strtolower(e($model->name));
             })
 
-            ->addColumn('username')
-            ->addColumn('email')
-            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (User $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('description')
+            ->addColumn('created_at_formatted', fn (Category $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn (Category $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -132,12 +131,7 @@ final class UserTable extends PowerGridComponent
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('USERNAME', 'username')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('EMAIL', 'email')
+            Column::make('DESCRIPTION', 'description')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -164,27 +158,24 @@ final class UserTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid User Action Buttons.
+     * PowerGrid Category Action Buttons.
      *
      * @return array<int, Button>
      */
     public function actions(): array
     {
         return [
-            // Button::make('view', 'View')
-            // ->class('btn btn-sm bg-primary cursor-pointer text-white')
-            // ->target('_self')
-            // ->route('users.show', ['user' => 'id']),
-
             Button::make('edit', 'Edit')
-                  ->class('btn btn-sm bg-warning cursor-pointer text-white')
-                  ->target('_self')
-                  ->route('users.edit', ['user' => 'id']),
 
-            //    Button::make('destroy', 'Delete')
-            //    ->class('btn btn-sm bg-danger cursor-pointer text-white')
-            //        ->route('users.destroy', ['user' => 'id'])
-            //        ->method('delete')
+                ->class('btn btn-sm bg-primary cursor-pointer text-white')
+                       ->target('_self')
+                ->route('categories.edit', ['category' => 'id']),
+
+            Button::make('destroy', 'Delete')
+                ->class('btn btn-sm bg-warning cursor-pointer text-white')
+                ->target('_self')
+                ->route('categories.destroy', ['category' => 'id'])
+                ->method('delete'),
         ];
     }
 
@@ -197,7 +188,7 @@ final class UserTable extends PowerGridComponent
     */
 
      /**
-     * PowerGrid User Action Rules.
+     * PowerGrid Category Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -209,7 +200,7 @@ final class UserTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($user) => $user->id === 1)
+                ->when(fn($category) => $category->id === 1)
                 ->hide(),
         ];
     }

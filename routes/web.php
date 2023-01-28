@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/login');
 
 Auth::routes();
-Route::get('test', function () {
-    return view('home2');
+
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // users
+    Route::resource('users', UserController::class);
+    //category
+    Route::resource('categories', CategoryController::class);
 });
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('users', UserController::class);

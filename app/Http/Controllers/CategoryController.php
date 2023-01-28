@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.users.index');
+        return view('pages.categories.index');
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('pages.users.create');
+        return view('pages.categories.create');
     }
 
     /**
@@ -29,13 +33,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        User::create(array_merge($request->validated(), [
-            'password' => Hash::make('hello123'),
-        ]));
+        Category::create($request->all());
 
-        return redirect()->route('users.index')->with('message', __('success'));
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -44,9 +46,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        // return view('pages.users.show', compact('user'));
+        //
     }
 
     /**
@@ -55,9 +57,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Category $category)
     {
-        return view('pages.users.edit', compact('user'));
+        return view('pages.categories.edit', compact('category'));
     }
 
     /**
@@ -67,11 +69,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(Request $request, Category $category)
     {
-        $user->update($request->validated());
+        $category->update($request->all());
 
-        return redirect()->route('users.index')->with('message', __('success'));
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -80,8 +82,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index');
     }
 }
