@@ -9,7 +9,18 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = [
+        'category_id',
+        'uuid',
+        'name',
+        'brand',
+        'description',
+        'stocks_available',
+        'remaining_stocks',
+        'status',
+        'wholesale_price',
+        'regular_price',
+    ];
 
     public function category()
     {

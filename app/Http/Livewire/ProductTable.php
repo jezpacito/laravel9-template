@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use PowerComponents\LivewirePowerGrid\Button;
@@ -17,7 +17,7 @@ use PowerComponents\LivewirePowerGrid\Rules\Rule;
 use PowerComponents\LivewirePowerGrid\Rules\RuleActions;
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
-final class UserTable extends PowerGridComponent
+final class ProductTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -54,11 +54,11 @@ final class UserTable extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\User>
+     * @return Builder<\App\Models\Product>
      */
     public function datasource(): Builder
     {
-        return User::query();
+        return Product::query();
     }
 
     /*
@@ -94,17 +94,15 @@ final class UserTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
+            ->addColumn('uuid')
             ->addColumn('name')
-
-            /** Example of custom column using a closure **/
-            ->addColumn('name_lower', function (User $model) {
-                return strtolower(e($model->name));
-            })
-
-            ->addColumn('username')
-            ->addColumn('email')
-            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('Y, M d'))
-            ->addColumn('updated_at_formatted', fn (User $model) => Carbon::parse($model->updated_at)->format('Y, M d'));
+            ->addColumn('brand')
+            ->addColumn('stocks_available')
+            ->addColumn('remaining_stocks')
+            ->addColumn('status')
+            ->addColumn('wholesale_price')
+            ->addColumn('regular_price')
+            ->addColumn('created_at_formatted', fn (Product $model) => Carbon::parse($model->created_at)->format('Y, M d'));
     }
 
     /*
@@ -124,23 +122,20 @@ final class UserTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-
-            Column::make('NAME', 'name')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('USERNAME', 'username')
-                ->sortable(),
-
-            Column::make('EMAIL', 'email')
-                ->sortable(),
+            Column::make('Product ID', 'uuid'),
+            Column::make('Name', 'name'),
+            Column::make('Brand', 'brand'),
+            Column::make('Stocks Available', 'stocks_available')
+            ->makeInputRange(),
+            Column::make('Remaining Stocks', 'remaining_stocks')
+            ->makeInputRange(),
+            Column::make('Status', 'status'),
+            Column::make('WholeSale Price', 'wholesale_price'),
+            Column::make('Regular Price', 'regular_price'),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
-
-                ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-
+                ->searchable()
+                ->sortable()
                 ->makeInputDatePicker(),
 
         ];
@@ -155,26 +150,26 @@ final class UserTable extends PowerGridComponent
     */
 
     /**
-     * PowerGrid User Action Buttons.
+     * PowerGrid Product Action Buttons.
      *
      * @return array<int, Button>
      */
     public function actions(): array
     {
         return [
-            // Button::make('view', 'View')
-            // ->class('btn btn-sm bg-primary cursor-pointer text-white')
-            // ->target('_self')
-            // ->route('users.show', ['user' => 'id']),
+            Button::make('view', 'View')
+              ->class('btn btn-sm bg-primary cursor-pointer text-white')
+              ->target('_self')
+              ->route('products.show', ['user' => 'id']),
 
             Button::make('edit', 'Edit')
-                  ->class('btn btn-sm bg-warning cursor-pointer text-white')
-                  ->target('_self')
-                  ->route('users.edit', ['user' => 'id']),
+            ->class('btn btn-sm bg-warning cursor-pointer text-white')
+                ->target('_self')
+                ->route('product.edit', ['product' => 'id']),
 
             //    Button::make('destroy', 'Delete')
-            //    ->class('btn btn-sm bg-danger cursor-pointer text-white')
-            //        ->route('users.destroy', ['user' => 'id'])
+            //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+            //        ->route('product.destroy', ['product' => 'id'])
             //        ->method('delete')
         ];
     }
@@ -188,7 +183,7 @@ final class UserTable extends PowerGridComponent
     */
 
      /**
-     * PowerGrid User Action Rules.
+     * PowerGrid Product Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -200,7 +195,7 @@ final class UserTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($user) => $user->id === 1)
+                ->when(fn($product) => $product->id === 1)
                 ->hide(),
         ];
     }

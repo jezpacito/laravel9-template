@@ -102,8 +102,8 @@ final class CategoryTable extends PowerGridComponent
             })
 
             ->addColumn('description')
-            ->addColumn('created_at_formatted', fn (Category $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Category $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Category $model) => Carbon::parse($model->created_at)->format('Y, M d'))
+            ->addColumn('updated_at_formatted', fn (Category $model) => Carbon::parse($model->updated_at)->format('Y, M d'));
     }
 
     /*
@@ -171,11 +171,11 @@ final class CategoryTable extends PowerGridComponent
                        ->target('_self')
                 ->route('categories.edit', ['category' => 'id']),
 
-            Button::make('destroy', 'Delete')
-                ->class('btn btn-sm bg-warning cursor-pointer text-white')
-                ->target('_self')
-                ->route('categories.destroy', ['category' => 'id'])
-                ->method('delete'),
+            // Button::make('destroy', 'Delete')
+            //     ->class('btn btn-sm bg-warning cursor-pointer text-white')
+            //     ->target('_self')
+            //     ->route('categories.destroy', ['category' => 'id'])
+            //     ->method('delete'),
         ];
     }
 

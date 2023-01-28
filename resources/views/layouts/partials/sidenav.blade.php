@@ -33,14 +33,18 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
+
                     <li>
                         <a href="{{route('categories.index')}}">Product Category</a>
                     </li>
                     <li>
-                        <a href="data-table.html">Available Products</a>
+                        <a href="{{route('products.index')}}">Available Products</a>
                     </li>
                     <li>
                         <a href="data-table.html">Unavailable Products</a>
+                    </li>
+                    <li>
+                        <a href="data-table.html">Add Stocks</a>
                     </li>
                 </ul>
             </li>
