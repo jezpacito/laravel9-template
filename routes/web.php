@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::redirect('/','/login');
+Route::redirect('/', '/login');
 
 Auth::routes();
 Route::get('test', function () {
