@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->integer('stocks_available')->default(0);
             $table->integer('remaining_stocks')->default(0);
-            $table->boolean('status') ->default(0);
+            $table->boolean('status')->default(0);
             $table->integer('wholesale_price')->default(0);
             $table->integer('regular_price')->default(0);
             $table->timestamps();
