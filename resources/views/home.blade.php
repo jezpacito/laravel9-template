@@ -2,59 +2,76 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-12">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <p class="m-b-0 text-muted">Sales</p>
-                                <h2 class="m-b-0">$23,523</h2>
+                                <p class="m-b-0 text-muted">Total Sales Products (Overall)</p>
+                                <h2 class="m-b-0">{{$salesOverall}}</h2>
                             </div>
-                            <span class="badge badge-pill badge-cyan font-size-12">
-                                <i class="anticon anticon-arrow-up"></i>
-                                <span class="font-weight-semibold m-l-5">6.71%</span>
-                            </span>
-                        </div>
-                        <div class="m-t-40">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <span class="badge badge-primary badge-dot m-r-10"></span>
-                                    <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
-                                </div>
-                                <span class="text-dark font-weight-semibold font-size-13">70% </span>
-                            </div>
-                            <div class="progress progress-sm w-100 m-b-0 m-t-10">
-                                <div class="progress-bar bg-primary" style="width: 70%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <p class="m-b-0 text-muted">Margin</p>
-                                <h2 class="m-b-0">$8,753</h2>
-                            </div>
-                            <span class="badge badge-pill badge-red font-size-12">
-                                <i class="anticon anticon-arrow-down"></i>
-                                <span class="font-weight-semibold m-l-5">3.26%</span>
-                            </span>
+
                         </div>
                         <div class="m-t-40">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <span class="badge badge-success badge-dot m-r-10"></span>
-                                    <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+                                    <span class="text-gray font-weight-semibold font-size-13">All Products</span>
                                 </div>
-                                <span class="text-dark font-weight-semibold font-size-13">60% </span>
                             </div>
                             <div class="progress progress-sm w-100 m-b-0 m-t-10">
-                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                                <div class="progress-bar bg-primary" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="m-b-0 text-muted">Total Sales (WholeSale)</p>
+                                <h2 class="m-b-0">{{$salesWholesale->sum('total_amount')}}</h2>
+                            </div>
+
+                        </div>
+                        <div class="m-t-40">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge badge-success badge-dot m-r-10"></span>
+                                    <span class="text-gray font-weight-semibold font-size-13">Wholesale Pieces Sold: {{$salesWholesale->sum('total_product')}}</span>
+                                </div>
+                            </div>
+                            <div class="progress progress-sm w-100 m-b-0 m-t-10">
+                                <div class="progress-bar bg-success" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="m-b-0 text-muted">Total Sales (Regular)</p>
+                                <h2 class="m-b-0">{{$salesRegular->sum('total_amount')}}</h2>
+                            </div>
+
+                        </div>
+                        <div class="m-t-40">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge badge-warning badge-dot m-r-10"></span>
+                                    <span class="text-gray font-weight-semibold font-size-13">Regular Pieces Sold: {{$salesRegular->sum('total_product')}}</span>
+                                </div>
+                            </div>
+                            <div class="progress progress-sm w-100 m-b-0 m-t-10">
+                                <div class="progress-bar bg-warning" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -67,24 +84,20 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <p class="m-b-0 text-muted">Orders</p>
-                                <h2 class="m-b-0">1,753</h2>
+                                <p class="m-b-0 text-muted">Total Items</p>
+                                <h2 class="m-b-0">{{$totalItems}}</h2>
                             </div>
-                            <span class="badge badge-pill badge-red font-size-12">
-                                <i class="anticon anticon-arrow-down"></i>
-                                <span class="font-weight-semibold m-l-5">2.71%</span>
-                            </span>
+
                         </div>
                         <div class="m-t-40">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex align-items-center">
-                                    <span class="badge badge-warning badge-dot m-r-10"></span>
-                                    <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+                                    <span class="badge badge-secondary badge-dot m-r-10"></span>
+                                    <span class="text-gray font-weight-semibold font-size-13">Total Products Available</span>
                                 </div>
-                                <span class="text-dark font-weight-semibold font-size-13">45% </span>
                             </div>
                             <div class="progress progress-sm w-100 m-b-0 m-t-10">
-                                <div class="progress-bar bg-warning" style="width: 45%"></div>
+                                <div class="progress-bar bg-secondary" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -95,24 +108,19 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <p class="m-b-0 text-muted">Affiliate</p>
-                                <h2 class="m-b-0">236</h2>
+                                <p class="m-b-0 text-muted">Total Sold Item</p>
+                                <h2 class="m-b-0">{{$totalItemSold}}</h2>
                             </div>
-                            <span class="badge badge-pill badge-gold font-size-12">
-                                <i class="anticon anticon-arrow-up"></i>
-                                <span class="font-weight-semibold m-l-5">N/A</span>
-                            </span>
                         </div>
                         <div class="m-t-40">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <span class="badge badge-secondary badge-dot m-r-10"></span>
-                                    <span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+                                    <span class="text-gray font-weight-semibold font-size-13">Sold Items</span>
                                 </div>
-                                <span class="text-dark font-weight-semibold font-size-13">50% </span>
                             </div>
                             <div class="progress progress-sm w-100 m-b-0 m-t-10">
-                                <div class="progress-bar bg-secondary" style="width: 50%"></div>
+                                <div class="progress-bar bg-secondary" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -120,98 +128,11 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-7">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5>Sales Statistics</h5>
-                    <div class="dropdown dropdown-animated scale-left">
-                        <a class="text-gray font-size-18" href="javascript:void(0);" data-toggle="dropdown">
-                            <i class="anticon anticon-ellipsis"></i>
-                        </a>
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button">
-                                <i class="anticon anticon-printer"></i>
-                                <span class="m-l-10">Print</span>
-                            </button>
-                            <button class="dropdown-item" type="button">
-                                <i class="anticon anticon-download"></i>
-                                <span class="m-l-10">Download</span>
-                            </button>
-                            <button class="dropdown-item" type="button">
-                                <i class="anticon anticon-file-excel"></i>
-                                <span class="m-l-10">Export</span>
-                            </button>
-                            <button class="dropdown-item" type="button">
-                                <i class="anticon anticon-reload"></i>
-                                <span class="m-l-10">Refresh</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-t-30">
-                    <div class="d-inline-block m-r-30">
-                        <p class="m-b-0 d-flex align-items-center">
-                            <span class="badge badge-primary badge-dot m-r-10"></span>
-                            <span>Online</span>
-                        </p>
-                    </div>
-                    <div class="d-inline-block">
-                        <p class="m-b-0 d-flex align-items-center">
-                            <span class="badge badge-blue badge-dot m-r-10"></span>
-                            <span>Offline</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="m-t-50">
-                    <canvas class="chart" style="height: 205px" id="sales-chart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 <div class="row">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5>Revenue</h5>
-                    <div>
-                        <a href="javascript:void(0);" class="btn btn-sm btn-default">View All</a>
-                    </div>
-                </div>
-                <div class="m-t-30">
-                    <div class="d-md-flex">
-                        <div class="pr-4 m-v-10 border-right border-hide-md">
-                            <p class="m-b-0">Net Revenue</p>
-                            <h3 class="m-b-0">
-                                <span>$58,323</span>
-                                <span class="text-success m-l-10 font-size-14">+6.71%</span>
-                            </h3>
-                        </div>
-                        <div class="px-md-4 m-v-10 border-right border-hide-md">
-                            <p class="m-b-0">Selling</p>
-                            <h3 class="m-b-0">
-                                <span>$17,523</span>
-                                <span class="text-danger m-l-10 font-size-14">+1.82%</span>
-                            </h3>
-                        </div>
-                        <div class="px-md-4 m-v-10">
-                            <p class="m-b-0">Cost</p>
-                            <h3 class="m-b-0">
-                                <span>$8,217</span>
-                                <span class="text-success m-l-10 font-size-14">+11.2%</span>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-t-50" style="height: 240px">
-                    <canvas class="chart" id="revenue-chart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
+
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
@@ -318,7 +239,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-4">
         <div class="card">
             <div class="card-body">
@@ -509,5 +430,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
