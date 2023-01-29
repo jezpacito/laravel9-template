@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +26,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrator',
             'username' => 'administrator',
             'email' => 'administrator@test.com',
+        ]);
+
+        Category::insert([
+            ['name' => 'Vape'],
+            ['name' => 'Vape Juice'],
         ]);
     }
 }

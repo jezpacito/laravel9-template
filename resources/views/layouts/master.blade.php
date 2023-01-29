@@ -48,14 +48,14 @@
 
 
     <!-- Core Vendors JS -->
-    <script src="assets/js/vendors.min.js"></script>
+    <script src="{{asset('assets/js/vendors.min.js')}}"></script>
 
     <!-- page js -->
-    <script src="assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="assets/js/pages/dashboard-e-commerce.js"></script>
+    <script src="{{asset('assets/vendors/chartjs/Chart.min.jss')}}"></script>
+    <script src="{{asset('assets/js/pages/dashboard-e-commerce.js')}}"></script>
 
     <!-- Core JS -->
-    <script src="assets/js/app.min.js"></script>
+    <script src="{{asset('assets/js/app.min.js')}}"></script>
 
     <!-- Scripts -->
     @livewireScripts

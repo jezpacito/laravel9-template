@@ -9,7 +9,10 @@ class StocksHistory extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'product_id',
+        'number_of_stocks_added',
+    ];
 
     public function product()
     {

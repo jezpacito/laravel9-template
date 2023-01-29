@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-<div>
+<div>category
     <div class="main-content">
-        @include('layouts.partials.headerNav',['name'=>'Add User'])
+        @include('layouts.partials.headerNav',['name'=>'Edit User'])
         <div class="card">
             <div class="card-body">
                 @if ($errors->any())
@@ -16,17 +16,18 @@
                 </div>
                 @endif
 
-                <form method="POST" action={{route('categories.store')}}>
+                <form method="POST" action="{{ route("categories.update", [$category->id]) }}">
+                    @method('PUT')
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Name</label>
-                            <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="Name" required>
+                            <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', $category->name) }}" required>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class=" form-group">
                         <label for="inputAddress2">Description</label>
-                        <textarea type="text" name="description" class="form-control" id="inputAddress2" placeholder="Description"> </textarea>
+                        <textarea type="text" name="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ old('description', $category->description) }} </textarea>
                     </div>
 
 

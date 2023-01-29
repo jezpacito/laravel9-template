@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\StocksHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('pages.products.index');
+        return view('pages.stocks.index');
     }
 
     /**
@@ -25,9 +26,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $products = Product::get();
 
-        return view('pages.products.create', compact('categories'));
+        return view('pages.stocks.create', compact('products'));
     }
 
     /**
@@ -38,7 +39,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
+        DB::transaction(function () use ($request) {
+            $stocks = StocksHistory::create($request->all());
+
+            $product = Product::find($request->product_id);
+            $sumNewStocks = $product->stocks_available + $stocks->number_of_stocks_added;
+            $product->update(['stocks_available' => $sumNewStocks]);
+        });
 
         return redirect()->route('products.index');
     }
@@ -49,9 +56,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        return view('pages.products.show', $product);
+        //
     }
 
     /**
@@ -60,11 +67,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $categories = Category::get();
-
-        return view('pages.products.edit', compact('product', 'categories'));
+        //
     }
 
     /**
@@ -74,11 +79,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $product->update($request->all());
-
-        return redirect()->route('products.index');
+        //
     }
 
     /**

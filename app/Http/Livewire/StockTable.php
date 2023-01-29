@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Product;
+use App\Models\StocksHistory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 use PowerComponents\LivewirePowerGrid\Button;
@@ -17,7 +17,7 @@ use PowerComponents\LivewirePowerGrid\Rules\Rule;
 use PowerComponents\LivewirePowerGrid\Rules\RuleActions;
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
-final class ProductTable extends PowerGridComponent
+final class StockTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -54,11 +54,11 @@ final class ProductTable extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\Product>
+     * @return Builder<\App\Models\StocksHistory>
      */
     public function datasource(): Builder
     {
-        return Product::query();
+        return StocksHistory::query();
     }
 
     /*
@@ -94,16 +94,10 @@ final class ProductTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('category', fn (Product $model) => '<span class="badge bg-info">'.$model->category?->name.'</span>')
-            // ->addColumn('uuid')
-            ->addColumn('name')
-            ->addColumn('brand')
-            ->addColumn('stocks_available')
-            ->addColumn('remaining_stocks')
-            // ->addColumn('status')
-            ->addColumn('wholesale_price')
-            ->addColumn('regular_price')
-            ->addColumn('created_at_formatted', fn (Product $model) => Carbon::parse($model->created_at)->format('Y, M d'));
+            ->addColumn('product', fn (StocksHistory $model) => '<span class="badge bg-info">'.$model->product?->name.'</span>')
+            ->addColumn('number_of_stocks_added')
+            ->addColumn('created_at_formatted', fn (StocksHistory $model) => Carbon::parse($model->created_at)->format('Y, M d'))
+            ->addColumn('updated_at_formatted', fn (StocksHistory $model) => Carbon::parse($model->updated_at)->format('Y, M d'));
     }
 
     /*
@@ -123,16 +117,21 @@ final class ProductTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id'),
-            Column::make('Name', 'name'),
-            Column::make('Brand', 'brand'),
-            Column::make('Stocks Available', 'stocks_available')
-            ->makeInputRange(),
-            Column::make('Category', 'category'),
-            Column::make('WholeSale Price', 'wholesale_price'),
-            Column::make('Regular Price', 'regular_price'),
+            Column::make('ID', 'id')
+                ->makeInputRange(),
+
+            Column::make('Product', 'product')
+                ->makeInputRange(),
+
+            Column::make('NUMBER OF STOCKS ADDED', 'number_of_stocks_added')
+                ->makeInputRange(),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
+                ->searchable()
+                ->sortable()
+                ->makeInputDatePicker(),
+
+            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
@@ -148,30 +147,27 @@ final class ProductTable extends PowerGridComponent
     |
     */
 
-    /**
-     * PowerGrid Product Action Buttons.
+     /**
+     * PowerGrid StocksHistory Action Buttons.
      *
      * @return array<int, Button>
      */
+
+    /*
     public function actions(): array
     {
-        return [
-            // Button::make('view', 'View')
-            //   ->class('btn btn-sm bg-primary cursor-pointer text-white')
-            //   ->target('_self')
-            //   ->route('products.show', ['user' => 'id']),
+       return [
+           Button::make('edit', 'Edit')
+               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+               ->route('stocks-history.edit', ['stocks-history' => 'id']),
 
-            Button::make('edit', 'Edit')
-            ->class('btn btn-sm bg-warning cursor-pointer text-white')
-                ->target('_self')
-                ->route('products.edit', ['product' => 'id']),
-
-            //    Button::make('destroy', 'Delete')
-            //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-            //        ->route('product.destroy', ['product' => 'id'])
-            //        ->method('delete')
+           Button::make('destroy', 'Delete')
+               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->route('stocks-history.destroy', ['stocks-history' => 'id'])
+               ->method('delete')
         ];
     }
+    */
 
     /*
     |--------------------------------------------------------------------------
@@ -182,7 +178,7 @@ final class ProductTable extends PowerGridComponent
     */
 
      /**
-     * PowerGrid Product Action Rules.
+     * PowerGrid StocksHistory Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -194,7 +190,7 @@ final class ProductTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($product) => $product->id === 1)
+                ->when(fn($stocks-history) => $stocks-history->id === 1)
                 ->hide(),
         ];
     }

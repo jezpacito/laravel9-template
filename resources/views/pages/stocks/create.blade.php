@@ -16,19 +16,22 @@
                 </div>
                 @endif
 
-                <form method="POST" action={{route('categories.store')}}>
+                <form method="POST" action={{route('stocks.store')}}>
                     @csrf
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Name</label>
-                            <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="Name" required>
+                        <div class="form-group">
+                            <label for="inputState">Products</label>
+                            <select id="inputState" class="form-control {{ $errors->has('products') ? 'is-invalid' : '' }}" name="product_id" id="products" required>
+                                @foreach($products as $id => $product)
+                                <option value="{{ $product->id }}" {{ in_array($id, old('product', [])) ? 'selected' : '' }}>{{ $product->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress2">Description</label>
-                        <textarea type="text" name="description" class="form-control" id="inputAddress2" placeholder="Description"> </textarea>
+                        <label for="inputAddress2">Number of Product/Stocks to be Added</label>
+                        <input type="number" min=0 name="number_of_stocks_added" class="form-control" placeholder="Add stock"> </textarea>
                     </div>
-
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

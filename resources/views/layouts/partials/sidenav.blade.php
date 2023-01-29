@@ -40,11 +40,9 @@
                     <li>
                         <a href="{{route('products.index')}}">Available Products</a>
                     </li>
+
                     <li>
-                        <a href="data-table.html">Unavailable Products</a>
-                    </li>
-                    <li>
-                        <a href="data-table.html">Add Stocks</a>
+                        <a href="{{route('stocks.index')}}">Stocks Details</a>
                     </li>
                 </ul>
             </li>
@@ -52,25 +50,13 @@
 
 
             <li class="nav-item dropdown open">
-                <a class="dropdown-toggle" href="{{route('users.index')}}">
+                <a class="dropdown-toggle" href="{{route('purchases.index')}}">
                     <span class="icon-holder">
                         <i class="anticon anticon-hdd"></i>
                     </span>
                     <span class="title">Purchases</span>
                 </a>
             </li>
-
-            <li class="nav-item dropdown open">
-                <a class="dropdown-toggle" href="{{route('users.index')}}">
-                    <span class="icon-holder">
-                        <i class="anticon anticon-hdd"></i>
-                    </span>
-                    <span class="title">Stocks Histories</span>
-                </a>
-            </li>
-
-
-
 
     </div>
 </div>

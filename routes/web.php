@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +31,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
     //products
     Route::resource('products', ProductController::class);
+    //stocks
+    Route::resource('stocks', StockController::class);
+    //purchase
+    Route::resource('purchases', PurchaseController::class);
 });
