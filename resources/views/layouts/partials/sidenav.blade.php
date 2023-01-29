@@ -41,13 +41,17 @@
                         <a href="{{route('products.index')}}">Available Products</a>
                     </li>
 
-                    <li>
-                        <a href="{{route('stocks.index')}}">Stocks Details</a>
-                    </li>
                 </ul>
             </li>
 
-
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="{{route('stocks.index')}}">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-hdd"></i>
+                    </span>
+                    <span class="title">Stocks</span>
+                </a>
+            </li>
 
             <li class="nav-item dropdown open">
                 <a class="dropdown-toggle" href="{{route('purchases.index')}}">

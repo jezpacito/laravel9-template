@@ -124,17 +124,17 @@ final class CategoryTable extends PowerGridComponent
     {
         return [
             Column::make('ID', 'id')
-                ->makeInputRange(),
+             ,
 
             Column::make('NAME', 'name')
                 ->sortable()
                 ->searchable()
-                ->makeInputText(),
+               ,
 
             Column::make('DESCRIPTION', 'description')
                 ->sortable()
                 ->searchable()
-                ->makeInputText(),
+         ,
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
                 ->searchable()

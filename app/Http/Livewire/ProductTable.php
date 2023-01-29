@@ -124,8 +124,10 @@ final class ProductTable extends PowerGridComponent
     {
         return [
             Column::make('ID', 'id'),
-            Column::make('Name', 'name'),
-            Column::make('Brand', 'brand'),
+            Column::make('Name', 'name')
+            ->searchable(),
+            Column::make('Brand', 'brand')
+            ->searchable(),
             Column::make('Stocks Available', 'stocks_available')
             ->makeInputRange(),
             Column::make('Category', 'category'),
