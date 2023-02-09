@@ -12,7 +12,7 @@
     <!-- page css -->
 
     <!-- Core css -->
-    <link href="assets/css/app.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -23,12 +23,12 @@
 
 
     <!-- Core Vendors JS -->
-    <script src="assets/js/vendors.min.js"></script>
+    <script src="{{ asset('assets/js/vendors.min.js') }}"></script>
 
     <!-- page js -->
 
     <!-- Core JS -->
-    <script src="assets/js/app.min.js"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
 </body>
 
