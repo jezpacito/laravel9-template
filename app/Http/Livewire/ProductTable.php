@@ -168,10 +168,10 @@ final class ProductTable extends PowerGridComponent
                 ->target('_self')
                 ->route('products.edit', ['product' => 'id']),
 
-               Button::make('destroy', 'Delete')
-                   ->class('btn btn-sm bg-danger cursor-pointer text-white')
-                   ->route('products.destroy', ['product' => 'id'])
-                   ->method('delete')
+            Button::make('destroy', 'Delete')
+                ->class('btn btn-sm bg-danger cursor-pointer text-white')
+                ->route('products.destroy', ['product' => 'id'])
+                ->method('delete'),
         ];
     }
 

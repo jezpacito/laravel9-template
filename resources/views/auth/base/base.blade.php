@@ -7,7 +7,7 @@
     <title>Enlink - Admin Dashboard Template</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}">
 
     <!-- page css -->
 

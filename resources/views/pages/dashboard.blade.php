@@ -226,7 +226,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex">
                                     <div class="avatar avatar-image m-r-15">
-                                        <img src="assets/images/others/thumb-9.jpg" alt="">
+                                        <img src="{{ asset('assets/images/others/thumb-9.jpg') }}" alt="">
                                     </div>
                                     <div>
                                         <h6 class="m-b-0">
@@ -244,7 +244,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex">
                                     <div class="avatar avatar-image m-r-15">
-                                        <img src="assets/images/others/thumb-10.jpg" alt="">
+                                        <img src="{{ asset('assets/images/others/thumb-10.jpg') }}" alt="">
                                     </div>
                                     <div>
                                         <h6 class="m-b-0">
@@ -262,7 +262,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex">
                                     <div class="avatar avatar-image m-r-15">
-                                        <img src="assets/images/others/thumb-11.jpg" alt="">
+                                        <img src="{{ asset('assets/images/others/thumb-11.jpg') }}" alt="">
                                     </div>
                                     <div>
                                         <h6 class="m-b-0">
@@ -280,7 +280,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex">
                                     <div class="avatar avatar-image m-r-15">
-                                        <img src="assets/images/others/thumb-12.jpg" alt="">
+                                        <img src="{{ asset('assets/images/others/thumb-12.jpg') }}" alt="">
                                     </div>
                                     <div>
                                         <h6 class="m-b-0">
@@ -298,7 +298,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex">
                                     <div class="avatar avatar-image m-r-15">
-                                        <img src="assets/images/others/thumb-13.jpg" alt="">
+                                        <img src="{{ asset('assets/images/others/thumb-13.jpg') }}" alt="">
                                     </div>
                                     <div>
                                         <h6 class="m-b-0">
@@ -382,7 +382,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-                                                    <img src="assets/images/avatars/thumb-1.jpg" alt="">
+                                                    <img src="{{ asset('assets/images/avatars/thumb-1.jpg') }}" alt="">
                                                 </div>
                                                 <h6 class="m-l-10 m-b-0">Erin Gonzales</h6>
                                             </div>
@@ -403,7 +403,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-                                                    <img src="assets/images/avatars/thumb-2.jpg" alt="">
+                                                    <img src="{{ asset('assets/images/avatars/thumb-2.jpg') }}" alt="">
                                                 </div>
                                                 <h6 class="m-l-10 m-b-0">Darryl Day</h6>
                                             </div>
@@ -424,7 +424,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-                                                    <img src="assets/images/avatars/thumb-3.jpg" alt="">
+                                                    <img src="{{ asset('assets/images/avatars/thumb-3.jpg') }}" alt="">
                                                 </div>
                                                 <h6 class="m-l-10 m-b-0">Marshall Nichols</h6>
                                             </div>
@@ -445,7 +445,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-                                                    <img src="assets/images/avatars/thumb-4.jpg" alt="">
+                                                    <img src="{{ asset('assets/images/avatars/thumb-4.jpg') }}" alt="">
                                                 </div>
                                                 <h6 class="m-l-10 m-b-0">Virgil Gonzales</h6>
                                             </div>
@@ -466,7 +466,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-                                                    <img src="assets/images/avatars/thumb-5.jpg" alt="">
+                                                    <img src="{{ asset('assets/images/avatars/thumb-5.jpg') }}" alt="">
                                                 </div>
                                                 <h6 class="m-l-10 m-b-0">Nicole Wyne</h6>
                                             </div>
@@ -487,7 +487,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-                                                    <img src="assets/images/avatars/thumb-6.jpg" alt="">
+                                                    <img src="{{ asset('assets/images/avatars/thumb-6.jpg') }}" alt="">
                                                 </div>
                                                 <h6 class="m-l-10 m-b-0">Riley Newman</h6>
                                             </div>

@@ -9,7 +9,7 @@
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between m-b-30">
-                                <img class="img-fluid" alt="" src="assets/images/logo/removed.png">
+                                <img class="img-fluid" alt="" src="{{ asset('assets/images/logo/removed.png') }}">
                                 <h2 class="m-b-0 text-center">Sign In</h2>
                             </div>
 

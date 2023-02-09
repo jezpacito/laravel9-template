@@ -123,18 +123,15 @@ final class CategoryTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-             ,
+            Column::make('ID', 'id'),
 
             Column::make('NAME', 'name')
                 ->sortable()
-                ->searchable()
-               ,
+                ->searchable(),
 
             Column::make('DESCRIPTION', 'description')
                 ->sortable()
-                ->searchable()
-         ,
+                ->searchable(),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
                 ->searchable()
